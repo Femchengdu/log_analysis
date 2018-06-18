@@ -22,9 +22,10 @@ def popular_articles():
 def format_popular_articles(query_table):
     print("Processing articles report .....")
     # Set the text string formatting
-    output_string_format = '"%s" -- %s views\n'
-    path_data_values = "".join(
-        output_string_format % (title, count) for title, count in query_table)
+    article_heading = '1 - What are the most popular articles of all time?\n'
+    data_values = "".join(
+        '\t"{}" -- {}\n'.format(row[0], row[1]) for row in query_table)
+    path_data_values = article_heading + data_values
     return path_data_values
 
 
@@ -49,9 +50,10 @@ def popular_authors():
 def format_popular_authors(query_table):
     print("Processing authors report ......")
     # Set the text string formatting
-    output_string_format = '%s -- %s views\n'
-    author_data_values = "".join(output_string_format % (author, article_count)
-                                 for author, article_count in query_table)
+    report_heading = '\n2 - The most popular article authors?\n'
+    data_values = "".join(
+        '\t{} -- {} views\n'.format(row[0], row[1]) for row in query_table)
+    author_data_values = report_heading + data_values
     return author_data_values
 
 
@@ -81,11 +83,10 @@ def date_errors():
 # Format the error data output
 def format_error_data(query_table):
     print("Processing error report .....")
-    # Set the text string formatting
-    output_string_format = '%s -- %s%s'
-    date_error_values = "".join(
-        output_string_format % (date, str(error_percent), '% errors')
-        for date, error_percent in query_table)
+    report_heading = '\n3 - Days with more than 1 % of requests as errors?\n'
+    error_values = "".join(
+        '\t{} -- {}% errors\n'.format(row[0], row[1]) for row in query_table)
+    date_error_values = report_heading + error_values
     return date_error_values
 
 
@@ -94,9 +95,8 @@ text_list = [format_popular_articles(popular_articles()),
              format_popular_authors(popular_authors()),
              format_error_data(date_errors())]
 
+
 # Write the report to the text file
-
-
 def write_functions(text_list):
     logfile = open('test.txt', 'w')
     for wm1 in text_list:

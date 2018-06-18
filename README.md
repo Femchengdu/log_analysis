@@ -2,6 +2,27 @@
 
 * Find below the views used to solve each question.
 * A text file called test.txt has been attached with output from running the code.
+### The database for this analysis is a fictional news database with the following table:
+* Author table
+* Article table
+* Log table
+### The questions answered by the log analysis are the following:
+* What are the most popular three articles of all time?
+* Who are the most popular article authors of all time?
+* On which days did more than 1% of requests lead to errors?
+### Usage
+This projects depends on the following:
+* A linux virtual machine:
+* https://www.virtualbox.org/wiki/Documentation
+* Vagrant:
+* https://www.vagrantup.com
+* Download the news data (FSND version)
+* https://udacity.com/course/full-stack-web-developer-nanodegree
+* once downloaded, cd into the directory and run the following command to load the database
+
+```sh
+psql -d news -f newsdata.sql
+```
 
 
 # Solution1

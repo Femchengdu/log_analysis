@@ -104,5 +104,6 @@ def write_functions(text_list):
     logfile.close()
     print("Find the completed log report in the text.txt file")
 
+
 # write the report to file.
 write_functions(text_list)
